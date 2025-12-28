@@ -1,0 +1,331 @@
+---
+const services = [
+  {
+    icon: 'code',
+    title: 'Desarrollo de Software',
+    description: 'Aplicaciones web y móviles de alto rendimiento con arquitecturas escalables y código limpio.',
+    features: ['Full-Stack Development', 'APIs RESTful & GraphQL', 'Microservicios', 'Cloud Native'],
+    accent: 'cyan'
+  },
+  {
+    icon: 'automation',
+    title: 'Automatizaciones',
+    description: 'Optimización de procesos mediante scripts, bots y workflows que eliminan tareas repetitivas.',
+    features: ['CI/CD Pipelines', 'Web Scraping', 'Task Automation', 'Integrations'],
+    accent: 'magenta'
+  },
+  {
+    icon: 'ai',
+    title: 'AI/ML Integration',
+    description: 'Implementación de modelos de inteligencia artificial y machine learning en productos existentes.',
+    features: ['LLM Integration', 'Computer Vision', 'NLP Solutions', 'Predictive Analytics'],
+    accent: 'green'
+  },
+  {
+    icon: 'consulting',
+    title: 'Consultoría Técnica',
+    description: 'Asesoramiento estratégico para decisiones tecnológicas y arquitectura de sistemas.',
+    features: ['Code Review', 'Tech Stack Selection', 'Performance Audit', 'Security Assessment'],
+    accent: 'amber'
+  }
+];
+
+const iconPaths = {
+  code: 'M16 18l6-6-6-6M8 6l-6 6 6 6',
+  automation: 'M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83',
+  ai: 'M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1.27c.34-.6.99-1 1.73-1a2 2 0 010 4c-.74 0-1.39-.4-1.73-1H20a7 7 0 01-7 7v1.27c.6.34 1 .99 1 1.73a2 2 0 01-4 0c0-.74.4-1.39 1-1.73V17a7 7 0 01-7-7H2.73c-.34.6-.99 1-1.73 1a2 2 0 010-4c.74 0 1.39.4 1.73 1H4a7 7 0 017-7V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2zm0 9a3 3 0 100 6 3 3 0 000-6z',
+  consulting: 'M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+};
+---
+
+<section class="services section" id="servicios">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">// Servicios</span>
+      <h2 class="section-title">
+        Soluciones <span class="gradient-text">end-to-end</span>
+      </h2>
+      <p class="section-description">
+        Desde la conceptualización hasta el deployment. Cada proyecto es una oportunidad
+        para crear algo extraordinario.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="services-grid">
+      {services.map((service, index) => (
+        <article class={`service-card service-${service.accent} animate-on-scroll delay-${index + 1}`}>
+          <div class="service-header">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d={iconPaths[service.icon as keyof typeof iconPaths]} />
+              </svg>
+            </div>
+            <span class="service-number">{String(index + 1).padStart(2, '0')}</span>
+          </div>
+
+          <h3 class="service-title">{service.title}</h3>
+          <p class="service-description">{service.description}</p>
+
+          <ul class="service-features">
+            {service.features.map(feature => (
+              <li class="service-feature">
+                <span class="feature-dot"></span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          <div class="service-link">
+            <span>Explorar</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto var(--space-lg);
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-title {
+    margin-bottom: var(--space-sm);
+    white-space: nowrap;
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+  }
+
+  /* Services Grid */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  /* Service Card */
+  .service-card {
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    padding: var(--space-md);
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-medium);
+    cursor: pointer;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--service-accent);
+    opacity: 0;
+    transition: var(--transition-fast);
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at top left,
+      var(--service-glow) 0%,
+      transparent 50%
+    );
+    opacity: 0;
+    transition: var(--transition-fast);
+    pointer-events: none;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--service-accent);
+  }
+
+  .service-card:hover::before {
+    opacity: 1;
+  }
+
+  .service-card:hover::after {
+    opacity: 1;
+  }
+
+  /* Color Variants */
+  .service-cyan {
+    --service-accent: var(--cyan);
+    --service-glow: var(--cyan-glow);
+  }
+
+  .service-magenta {
+    --service-accent: var(--magenta);
+    --service-glow: var(--magenta-glow);
+  }
+
+  .service-green {
+    --service-accent: var(--terminal-green);
+    --service-glow: var(--terminal-green-dim);
+  }
+
+  .service-amber {
+    --service-accent: var(--amber);
+    --service-glow: rgba(255, 170, 0, 0.2);
+  }
+
+  /* Service Header */
+  .service-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--abyss);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    color: var(--service-accent);
+    transition: var(--transition-fast);
+  }
+
+  .service-card:hover .service-icon {
+    border-color: var(--service-accent);
+    box-shadow: 0 0 20px var(--service-glow);
+  }
+
+  .service-number {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* Service Content */
+  .service-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .service-description {
+    font-size: 0.9375rem;
+    margin-bottom: var(--space-sm);
+    line-height: 1.7;
+  }
+
+  /* Service Features */
+  .service-features {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding: 0.25rem 0.75rem;
+    background: var(--abyss);
+    border-radius: 4px;
+  }
+
+  .feature-dot {
+    width: 4px;
+    height: 4px;
+    background: var(--service-accent);
+    border-radius: 50%;
+  }
+
+  /* Service Link */
+  .service-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--service-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--surface-elevated);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: var(--transition-fast);
+  }
+
+  .service-link svg {
+    transition: var(--transition-fast);
+  }
+
+  .service-card:hover .service-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .service-card:hover .service-link svg {
+    transform: translateX(4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .service-card {
+      padding: var(--space-sm);
+    }
+
+    .service-features {
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .service-feature {
+      width: fit-content;
+    }
+  }
+</style>

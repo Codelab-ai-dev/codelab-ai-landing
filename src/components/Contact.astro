@@ -1,0 +1,450 @@
+---
+const contactMethods = [
+  {
+    icon: 'email',
+    label: 'Email',
+    value: 'hgonzalez@codelabai.dev',
+    href: 'mailto:hgonzalez@codelabai.dev'
+  },
+  {
+    icon: 'linkedin',
+    label: 'LinkedIn',
+    value: '/in/gustavogonzalez',
+    href: 'https://linkedin.com/in/gustavogonzalez'
+  },
+  {
+    icon: 'github',
+    label: 'GitHub',
+    value: '@Codelab-ai-dev',
+    href: 'https://github.com/Codelab-ai-dev'
+  },
+  {
+    icon: 'twitter',
+    label: 'Twitter',
+    value: '@codelabaidev',
+    href: 'https://twitter.com/codelabaidev'
+  }
+];
+
+const iconPaths = {
+  email: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  linkedin: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z',
+  github: 'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22',
+  twitter: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z'
+};
+---
+
+<section class="contact section" id="contacto">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Left Column: Info -->
+      <div class="contact-info">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">// Contacto</span>
+          <h2 class="section-title">
+            Hagamos algo <span class="gradient-text">increíble</span>
+          </h2>
+          <p class="section-description">
+            ¿Tienes un proyecto en mente? Me encantaría escuchar tu idea y
+            explorar cómo puedo ayudarte a hacerla realidad.
+          </p>
+        </div>
+
+        <!-- Contact Methods -->
+        <div class="contact-methods animate-on-scroll delay-1">
+          {contactMethods.map(method => (
+            <a href={method.href} class="contact-method" target="_blank" rel="noopener noreferrer">
+              <div class="method-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d={iconPaths[method.icon as keyof typeof iconPaths]} />
+                </svg>
+              </div>
+              <div class="method-content">
+                <span class="method-label">{method.label}</span>
+                <span class="method-value">{method.value}</span>
+              </div>
+              <svg class="method-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+
+        <!-- Availability -->
+        <div class="availability animate-on-scroll delay-2">
+          <div class="availability-badge">
+            <span class="availability-dot"></span>
+            <span>Disponible para nuevos proyectos</span>
+          </div>
+          <p class="availability-text">
+            Respondo generalmente en menos de 24 horas.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Form -->
+      <div class="contact-form-wrapper animate-on-scroll delay-1">
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-header">
+            <span class="form-title">Envíame un mensaje</span>
+            <div class="form-decoration">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="name" class="form-label">Nombre</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="form-input"
+              placeholder="Tu nombre"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-input"
+              placeholder="tu@email.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject" class="form-label">Asunto</label>
+            <select id="subject" name="subject" class="form-input form-select" required>
+              <option value="" disabled selected>Selecciona una opción</option>
+              <option value="project">Nuevo proyecto</option>
+              <option value="consulting">Consultoría</option>
+              <option value="collaboration">Colaboración</option>
+              <option value="other">Otro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Mensaje</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-input form-textarea"
+              placeholder="Cuéntame sobre tu proyecto..."
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-submit">
+            <span>Enviar mensaje</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Decoration -->
+  <div class="contact-bg" aria-hidden="true">
+    <div class="bg-circle"></div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  /* Info Column */
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .section-header {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .section-description {
+    font-size: 1.125rem;
+  }
+
+  /* Contact Methods */
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .contact-method {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: var(--transition-fast);
+  }
+
+  .contact-method:hover {
+    border-color: var(--cyan-dim);
+    transform: translateX(8px);
+  }
+
+  .method-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--abyss);
+    border-radius: 8px;
+    color: var(--cyan);
+  }
+
+  .method-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .method-label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .method-value {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+  }
+
+  .method-arrow {
+    color: var(--text-muted);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: var(--transition-fast);
+  }
+
+  .contact-method:hover .method-arrow {
+    opacity: 1;
+    transform: translateX(0);
+    color: var(--cyan);
+  }
+
+  /* Availability */
+  .availability {
+    padding: var(--space-sm);
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+  }
+
+  .availability-badge {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--terminal-green);
+    margin-bottom: 0.5rem;
+  }
+
+  .availability-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--terminal-green);
+    border-radius: 50%;
+    animation: pulse-glow 2s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--terminal-green);
+  }
+
+  .availability-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Form */
+  .contact-form-wrapper {
+    position: relative;
+  }
+
+  .contact-form {
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    padding: var(--space-md);
+    position: relative;
+  }
+
+  .contact-form::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-cyber);
+  }
+
+  .form-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--surface-elevated);
+  }
+
+  .form-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .form-decoration {
+    display: flex;
+    gap: 6px;
+  }
+
+  .form-decoration span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--surface-elevated);
+  }
+
+  .form-decoration span:first-child { background: var(--cyan-dim); }
+
+  .form-group {
+    margin-bottom: var(--space-sm);
+  }
+
+  .form-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--abyss);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    transition: var(--transition-fast);
+  }
+
+  .form-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--cyan);
+    box-shadow: 0 0 0 3px var(--cyan-glow);
+  }
+
+  .form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238888aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    margin-top: var(--space-xs);
+    justify-content: center;
+  }
+
+  .btn-submit svg {
+    transition: var(--transition-fast);
+  }
+
+  .btn-submit:hover svg {
+    transform: translate(4px, -4px);
+  }
+
+  /* Background */
+  .contact-bg {
+    position: absolute;
+    top: 50%;
+    right: -200px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .bg-circle {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+    opacity: 0.3;
+    filter: blur(60px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-bg {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .contact-form {
+      padding: var(--space-sm);
+    }
+  }
+</style>

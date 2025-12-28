@@ -1,0 +1,416 @@
+---
+const stats = [
+  { value: '5+', label: 'Años de experiencia' },
+  { value: '50+', label: 'Proyectos completados' },
+  { value: '99%', label: 'Clientes satisfechos' },
+  { value: '24/7', label: 'Soporte disponible' }
+];
+
+const techCategories = [
+  {
+    name: 'Frontend',
+    items: ['React', 'Next.js', 'TypeScript', 'Tailwind']
+  },
+  {
+    name: 'Mobile',
+    items: ['Dart', 'Flutter', 'React Native']
+  },
+  {
+    name: 'Backend',
+    items: ['Node.js', 'Python', 'Go', 'PostgreSQL']
+  },
+  {
+    name: 'Cloud & DevOps',
+    items: ['AWS', 'Docker', 'Kubernetes', 'Terraform']
+  },
+  {
+    name: 'AI & Automation',
+    items: ['OpenAI', 'LangChain', 'n8n', 'Hugging Face']
+  }
+];
+---
+
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left Column: Visual -->
+      <div class="about-visual animate-on-scroll">
+        <div class="code-window">
+          <div class="code-header">
+            <div class="code-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="code-filename">developer.json</span>
+          </div>
+          <pre class="code-content"><code><span class="code-bracket">{</span>
+  <span class="code-key">"name"</span>: <span class="code-string">"Gustavo González"</span>,
+  <span class="code-key">"role"</span>: <span class="code-string">"Full-Stack Developer"</span>,
+  <span class="code-key">"location"</span>: <span class="code-string">"Remote 🌎"</span>,
+  <span class="code-key">"passion"</span>: <span class="code-string">"Building the future"</span>,
+  <span class="code-key">"status"</span>: <span class="code-string">"Available for hire"</span>,
+  <span class="code-key">"coffee"</span>: <span class="code-boolean">true</span>,
+  <span class="code-key">"skills"</span>: <span class="code-bracket">[</span>
+    <span class="code-string">"Problem Solving"</span>,
+    <span class="code-string">"Clean Code"</span>,
+    <span class="code-string">"System Design"</span>
+  <span class="code-bracket">]</span>
+<span class="code-bracket">}</span></code></pre>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          {stats.map((stat, index) => (
+            <div class="stat-item" style={`--stat-delay: ${index * 0.1}s`}>
+              <span class="stat-value">{stat.value}</span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Content -->
+      <div class="about-content">
+        <div class="section-header animate-on-scroll">
+          <span class="section-tag">// Sobre Mí</span>
+          <h2 class="section-title">
+            Código con <span class="gradient-text">propósito</span>
+          </h2>
+        </div>
+
+        <div class="about-text animate-on-scroll delay-1">
+          <p>
+            Soy un desarrollador apasionado por crear soluciones tecnológicas que
+            realmente impactan. Mi enfoque combina <strong>excelencia técnica</strong>
+            con una profunda comprensión de las necesidades del negocio.
+          </p>
+          <p>
+            Especializado en <span class="highlight">automatizaciones</span> y
+            <span class="highlight">integraciones con AI</span>, ayudo a empresas
+            a escalar sus operaciones y a startups a construir productos que los
+            usuarios aman.
+          </p>
+          <p>
+            Creo firmemente en el código limpio, la documentación clara y los
+            tests automatizados. Cada línea de código debe tener un propósito.
+          </p>
+        </div>
+
+        <!-- Tech Stack -->
+        <div class="tech-stack animate-on-scroll delay-2">
+          <h3 class="tech-title">Stack Tecnológico</h3>
+          <div class="tech-categories">
+            {techCategories.map(category => (
+              <div class="tech-category">
+                <span class="tech-category-name">{category.name}</span>
+                <div class="tech-items">
+                  {category.items.map(item => (
+                    <span class="tech-item">{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="about-cta animate-on-scroll delay-3">
+          <a href="#contacto" class="btn btn-primary">
+            <span>Trabajemos juntos</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/cv.pdf" class="btn btn-secondary" download>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            <span>Descargar CV</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    position: relative;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  /* Visual Column */
+  .about-visual {
+    position: sticky;
+    top: 120px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* Code Window */
+  .code-window {
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .code-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.75rem 1rem;
+    background: var(--abyss);
+    border-bottom: 1px solid var(--surface-elevated);
+  }
+
+  .code-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .code-dots span {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .code-dots span:nth-child(1) { background: #ff5f57; }
+  .code-dots span:nth-child(2) { background: #ffbd2e; }
+  .code-dots span:nth-child(3) { background: #28ca42; }
+
+  .code-filename {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .code-content {
+    padding: 1.5rem;
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    line-height: 1.8;
+    overflow-x: auto;
+  }
+
+  .code-content code {
+    display: block;
+  }
+
+  .code-bracket { color: var(--text-secondary); }
+  .code-key { color: var(--cyan); }
+  .code-string { color: var(--terminal-green); }
+  .code-boolean { color: var(--magenta); }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .stat-item {
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    padding: var(--space-sm);
+    text-align: center;
+    transition: var(--transition-fast);
+    animation: fade-in-up 0.5s var(--ease-out-expo) forwards;
+    animation-delay: var(--stat-delay);
+    opacity: 0;
+  }
+
+  .stat-item:hover {
+    border-color: var(--cyan-dim);
+    transform: translateY(-2px);
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  .stat-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.5rem;
+  }
+
+  /* Content Column */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .section-header {
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  /* About Text */
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .about-text p {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .about-text strong {
+    color: var(--text-primary);
+  }
+
+  .about-text .highlight {
+    color: var(--cyan);
+    font-weight: 500;
+  }
+
+  /* Tech Stack */
+  .tech-stack {
+    padding: var(--space-md);
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+  }
+
+  .tech-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .tech-categories {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .tech-category {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .tech-category-name {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--cyan);
+    min-width: 100px;
+    padding-top: 0.25rem;
+  }
+
+  .tech-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-item {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--abyss);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+  }
+
+  .tech-item:hover {
+    border-color: var(--cyan-dim);
+    color: var(--text-primary);
+  }
+
+  /* CTA */
+  .about-cta {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .about-cta .btn svg {
+    transition: var(--transition-fast);
+  }
+
+  .about-cta .btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  .about-cta .btn-secondary svg {
+    margin-right: 0.25rem;
+  }
+
+  .about-cta .btn-secondary:hover svg {
+    transform: translateY(2px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-visual {
+      position: relative;
+      top: 0;
+      order: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-category {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tech-category-name {
+      min-width: auto;
+    }
+
+    .about-cta {
+      flex-direction: column;
+    }
+
+    .about-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

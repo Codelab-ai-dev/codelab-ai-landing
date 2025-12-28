@@ -1,0 +1,132 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Desarrollo de software, automatizaciones e integraciones con AI/ML. Transformo ideas en soluciones tecnológicas de alto impacto."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="codelab-ai.dev" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://codelab-ai.dev" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <!-- Background Effects -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="scan-line" aria-hidden="true"></div>
+
+    <!-- Circuit Background SVG -->
+    <svg class="circuit-bg" aria-hidden="true">
+      <defs>
+        <linearGradient id="circuit-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#00f5ff;stop-opacity:0.3" />
+          <stop offset="100%" style="stop-color:#ff00aa;stop-opacity:0.3" />
+        </linearGradient>
+      </defs>
+      <g class="circuit-lines">
+        <path d="M0,100 Q200,100 200,300 T400,500" />
+        <path d="M100,0 Q100,200 300,200 T500,400" />
+        <path d="M400,100 Q600,100 600,400" />
+        <circle cx="200" cy="300" r="4" />
+        <circle cx="300" cy="200" r="4" />
+        <circle cx="400" cy="500" r="4" />
+      </g>
+    </svg>
+
+    <slot />
+
+    <!-- Scroll Animation Script -->
+    <script>
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+
+  .circuit-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: visible;
+  }
+
+  .circuit-lines path {
+    fill: none;
+    stroke: url(#circuit-gradient);
+    stroke-width: 1;
+    stroke-dasharray: 1000;
+    animation: circuit-pulse 10s ease-in-out infinite;
+  }
+
+  .circuit-lines circle {
+    fill: var(--cyan);
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .circuit-lines path:nth-child(2) {
+    animation-delay: -3s;
+  }
+
+  .circuit-lines path:nth-child(3) {
+    animation-delay: -6s;
+  }
+
+  .circuit-lines circle:nth-child(5) {
+    animation-delay: -1s;
+  }
+
+  .circuit-lines circle:nth-child(6) {
+    animation-delay: -2s;
+  }
+</style>

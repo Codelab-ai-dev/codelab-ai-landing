@@ -1,0 +1,507 @@
+---
+const terminalLines = [
+  { prefix: '~', command: 'whoami', delay: 0 },
+  { prefix: '>', output: 'Software Developer & Automation Engineer', delay: 1 },
+  { prefix: '~', command: 'cat skills.json', delay: 2.5 },
+  { prefix: '>', output: '["AI/ML", "Full-Stack", "DevOps", "Automation"]', delay: 3.5 },
+];
+---
+
+<section class="hero" id="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <!-- Status Badge -->
+      <div class="status-badge animate-on-scroll">
+        <span class="status-dot"></span>
+        <span class="status-text">Disponible para proyectos</span>
+      </div>
+
+      <!-- Main Heading -->
+      <h1 class="hero-title animate-on-scroll delay-1">
+        <span class="title-line">Construyo el</span>
+        <span class="title-line title-highlight">
+          <span class="gradient-text">futuro</span>
+          <span class="glitch-wrapper">
+            <span class="glitch" data-text="digital">digital</span>
+          </span>
+        </span>
+      </h1>
+
+      <!-- Description -->
+      <p class="hero-description animate-on-scroll delay-2">
+        Desarrollo de software de alto rendimiento, automatizaciones inteligentes
+        e integraciones con <span class="highlight">AI/ML</span> que transforman
+        la manera en que operan los negocios.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="hero-cta animate-on-scroll delay-3">
+        <a href="#proyectos" class="btn btn-primary">
+          <span>Ver Proyectos</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="#contacto" class="btn btn-secondary">
+          <span>Contactar</span>
+        </a>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="hero-stack animate-on-scroll delay-4">
+        <span class="stack-label">Stack principal:</span>
+        <div class="stack-items">
+          <span class="stack-item">Flutter</span>
+          <span class="stack-item">React Native</span>
+          <span class="stack-item">TypeScript</span>
+          <span class="stack-item">Python</span>
+          <span class="stack-item">n8n</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terminal Window -->
+    <div class="hero-terminal animate-on-scroll delay-2">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-buttons">
+            <span class="terminal-btn close"></span>
+            <span class="terminal-btn minimize"></span>
+            <span class="terminal-btn maximize"></span>
+          </div>
+          <span class="terminal-title">codelab@dev ~ </span>
+        </div>
+        <div class="terminal-body">
+          {terminalLines.map((line, index) => (
+            <div class="terminal-line" style={`--line-delay: ${line.delay}s`}>
+              <span class="terminal-prefix">{line.prefix}</span>
+              {line.command && (
+                <span class="terminal-command typing">{line.command}</span>
+              )}
+              {line.output && (
+                <span class="terminal-output">{line.output}</span>
+              )}
+            </div>
+          ))}
+          <div class="terminal-line terminal-cursor">
+            <span class="terminal-prefix">~</span>
+            <span class="cursor">_</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Elements -->
+      <div class="floating-elements">
+        <div class="floating-card card-1">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+          <span>50+ Proyectos</span>
+        </div>
+        <div class="floating-card card-2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+          <span>99.9% Uptime</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-mouse">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: calc(var(--space-xl) + 80px) 0 var(--space-xl);
+  }
+
+  .hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    align-items: center;
+  }
+
+  /* Hero Content */
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* Status Badge */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding: 0.5rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 100px;
+    width: fit-content;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--terminal-green);
+    border-radius: 50%;
+    animation: pulse-glow 2s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--terminal-green);
+  }
+
+  .status-text {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Title */
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .title-line {
+    display: block;
+  }
+
+  .title-highlight {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .glitch-wrapper {
+    position: relative;
+  }
+
+  .glitch {
+    position: relative;
+    color: var(--text-primary);
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  .glitch::before {
+    color: var(--cyan);
+    z-index: -1;
+  }
+
+  .glitch::after {
+    color: var(--magenta);
+    z-index: -2;
+  }
+
+  .glitch:hover::before {
+    animation: glitch 0.3s ease infinite;
+    opacity: 0.8;
+  }
+
+  .glitch:hover::after {
+    animation: glitch 0.3s ease infinite reverse;
+    opacity: 0.8;
+  }
+
+  /* Description */
+  .hero-description {
+    font-size: 1.25rem;
+    max-width: 500px;
+    line-height: 1.8;
+  }
+
+  .hero-description .highlight {
+    color: var(--cyan);
+    font-weight: 600;
+  }
+
+  /* CTA */
+  .hero-cta {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .hero-cta .btn svg {
+    transition: var(--transition-fast);
+  }
+
+  .hero-cta .btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Tech Stack */
+  .hero-stack {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--surface-elevated);
+  }
+
+  .stack-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .stack-items {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .stack-item {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+  }
+
+  .stack-item:hover {
+    border-color: var(--cyan-dim);
+    color: var(--cyan);
+  }
+
+  /* Terminal */
+  .hero-terminal {
+    position: relative;
+  }
+
+  .terminal-window {
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0, 245, 255, 0.1),
+      0 20px 50px -20px rgba(0, 0, 0, 0.5);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: 0.75rem 1rem;
+    background: var(--abyss);
+    border-bottom: 1px solid var(--surface-elevated);
+  }
+
+  .terminal-buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .terminal-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .terminal-btn.close { background: #ff5f57; }
+  .terminal-btn.minimize { background: #ffbd2e; }
+  .terminal-btn.maximize { background: #28ca42; }
+
+  .terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .terminal-body {
+    padding: 1.5rem;
+    min-height: 250px;
+  }
+
+  .terminal-line {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fade-in-up 0.5s var(--ease-out-expo) forwards;
+    animation-delay: var(--line-delay);
+  }
+
+  .terminal-prefix {
+    color: var(--cyan);
+  }
+
+  .terminal-command {
+    color: var(--text-primary);
+  }
+
+  .terminal-output {
+    color: var(--terminal-green);
+  }
+
+  .terminal-cursor {
+    opacity: 1;
+    animation: none;
+  }
+
+  .cursor {
+    color: var(--cyan);
+    animation: blink 1s step-end infinite;
+  }
+
+  /* Floating Cards */
+  .floating-elements {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    animation: float 6s ease-in-out infinite;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+  }
+
+  .floating-card svg {
+    color: var(--cyan);
+  }
+
+  .card-1 {
+    top: -20px;
+    right: 20px;
+    animation-delay: 0s;
+  }
+
+  .card-2 {
+    bottom: 20px;
+    left: -40px;
+    animation-delay: -3s;
+  }
+
+  .card-2 svg {
+    color: var(--magenta);
+  }
+
+  /* Scroll Indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: var(--space-md);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .scroll-mouse {
+    width: 20px;
+    height: 32px;
+    border: 2px solid var(--text-muted);
+    border-radius: 10px;
+    position: relative;
+  }
+
+  .scroll-wheel {
+    width: 3px;
+    height: 6px;
+    background: var(--cyan);
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: scroll-wheel 2s ease-in-out infinite;
+  }
+
+  @keyframes scroll-wheel {
+    0%, 100% { opacity: 1; top: 6px; }
+    50% { opacity: 0; top: 16px; }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+
+    .hero-terminal {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .floating-card {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding-top: calc(var(--space-lg) + 80px);
+    }
+
+    .hero-description {
+      font-size: 1rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .scroll-indicator {
+      display: none;
+    }
+  }
+</style>

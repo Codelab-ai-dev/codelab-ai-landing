@@ -1,0 +1,376 @@
+---
+const currentYear = new Date().getFullYear();
+
+const socialLinks = [
+  { icon: 'github', href: 'https://github.com/Codelab-ai-dev', label: 'GitHub' },
+  { icon: 'linkedin', href: 'https://linkedin.com/in/tuusuario', label: 'LinkedIn' },
+  { icon: 'twitter', href: 'https://twitter.com/tuusuario', label: 'Twitter' },
+  { icon: 'email', href: 'mailto:hgonzalez@codelabai.dev', label: 'Email' }
+];
+
+const navLinks = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Sobre Mí', href: '#about' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Contacto', href: '#contacto' }
+];
+
+const iconPaths = {
+  github: 'M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22',
+  linkedin: 'M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z',
+  twitter: 'M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z',
+  email: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z'
+};
+---
+
+<footer class="footer">
+  <div class="container">
+    <!-- Footer Top -->
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">
+          <img src="/codelab-ai.logo.png" alt="codelab-ai.dev" class="footer-logo-img" />
+          <span class="logo-bracket">[</span>
+          <span class="logo-text">codelab</span>
+          <span class="logo-dot">.</span>
+          <span class="logo-ai">ai</span>
+          <span class="logo-bracket">]</span>
+        </a>
+        <p class="footer-tagline">
+          Transformando ideas en código de alto impacto.
+        </p>
+      </div>
+
+      <nav class="footer-nav">
+        <span class="footer-nav-title">Navegación</span>
+        <ul class="footer-nav-list">
+          {navLinks.map(link => (
+            <li>
+              <a href={link.href} class="footer-nav-link">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div class="footer-social">
+        <span class="footer-social-title">Conecta</span>
+        <div class="social-links">
+          {socialLinks.map(social => (
+            <a
+              href={social.href}
+              class="social-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={social.label}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d={iconPaths[social.icon as keyof typeof iconPaths]} />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Divider -->
+    <div class="footer-divider">
+      <div class="divider-line"></div>
+      <div class="divider-node"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="copyright">
+        <span class="copyright-symbol">&copy;</span> {currentYear} codelab-ai.dev
+        <span class="copyright-separator">|</span>
+        <span class="copyright-text">Hecho con</span>
+        <span class="copyright-heart">♥</span>
+        <span class="copyright-text">y mucho</span>
+        <span class="copyright-coffee">☕</span>
+      </p>
+
+      <div class="tech-badge">
+        <span>Construido con</span>
+        <svg width="20" height="20" viewBox="0 0 128 128" fill="currentColor">
+          <path d="M81.504 9.465c.973 1.207 1.469 2.836 1.469 4.903 0 4.027-1.375 7.496-4.102 10.391-3.221 3.543-7.148 5.297-11.672 5.297-.457 0-.914-.021-1.371-.063-1.883-5.387-1.371-10.922 1.547-16.594 2.918-5.672 7.23-9.094 12.891-10.281.207.723.391 1.469.551 2.238.352 1.594.52 3.199.508 4.812-.004.426-.008.859-.035 1.297zm-13.848 23.652c2.129 0 4.203.395 6.203 1.168l.047.023c.281.105.602.234.957.391-.281-1.059-.457-2.285-.457-3.688 0-4.773 1.684-9.168 5.031-13.164 3.348-3.996 7.586-6.703 12.711-8.098.504 2.879.516 5.766.004 8.652-.82 4.637-2.871 8.707-6.145 12.207-3.316 3.543-7.223 5.969-11.695 7.266.469 2.082 1.555 3.797 3.25 5.141 1.695 1.344 3.605 2.016 5.727 2.016 1.473 0 2.902-.312 4.281-.938 1.379-.625 2.551-1.375 3.516-2.25l.266-.234c1.262-1.078 2.617-1.613 4.066-1.613.328 0 .656.027.984.082 1.863.305 3.32 1.234 4.371 2.785 1.051 1.551 1.539 3.246 1.465 5.082-.074 1.836-.652 3.488-1.73 4.957-1.078 1.469-2.461 2.508-4.145 3.117a8.587 8.587 0 01-2.918.516c-1.715 0-3.211-.496-4.484-1.488-1.273-.992-2.25-2.238-2.926-3.738a11.683 11.683 0 01-.891-2.988c-.805.18-1.609.289-2.41.316-.27.008-.539.012-.805.012-5.078 0-9.406-1.699-12.957-5.109-3.551-3.41-5.719-7.57-6.488-12.488.961-.188 1.957-.285 2.984-.285z"/>
+        </svg>
+        <span>Astro</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Volver arriba">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+</footer>
+
+<script>
+  const backToTop = document.querySelector('.back-to-top');
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > 500) {
+      backToTop?.classList.add('visible');
+    } else {
+      backToTop?.classList.remove('visible');
+    }
+  });
+
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<style>
+  .footer {
+    background: var(--abyss);
+    border-top: 1px solid var(--surface-elevated);
+    padding: var(--space-lg) 0 var(--space-md);
+    position: relative;
+  }
+
+  /* Footer Top */
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  /* Brand */
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-logo {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    margin-bottom: var(--space-xs);
+  }
+
+  .footer-logo-img {
+    height: 52px;
+    width: auto;
+    transition: var(--transition-fast);
+  }
+
+  .footer-logo:hover .footer-logo-img {
+    filter: drop-shadow(0 0 12px var(--cyan-dim));
+  }
+
+  .logo-bracket { color: var(--cyan); opacity: 0.6; }
+  .logo-text { color: var(--text-primary); }
+  .logo-dot { color: var(--magenta); }
+  .logo-ai { color: var(--cyan); }
+
+  .footer-logo:hover .logo-bracket {
+    opacity: 1;
+    text-shadow: var(--glow-cyan);
+  }
+
+  .footer-tagline {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* Navigation */
+  .footer-nav-title,
+  .footer-social-title {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .footer-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-nav-link {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition-fast);
+    display: inline-block;
+  }
+
+  .footer-nav-link:hover {
+    color: var(--cyan);
+    transform: translateX(4px);
+  }
+
+  /* Social */
+  .social-links {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    transition: var(--transition-fast);
+  }
+
+  .social-link:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    transform: translateY(-2px);
+  }
+
+  /* Divider */
+  .footer-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--surface-elevated),
+      transparent
+    );
+  }
+
+  .divider-node {
+    width: 8px;
+    height: 8px;
+    background: var(--cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--cyan-dim);
+  }
+
+  /* Footer Bottom */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .copyright {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .copyright-symbol {
+    color: var(--cyan);
+  }
+
+  .copyright-separator {
+    color: var(--surface-elevated);
+  }
+
+  .copyright-heart {
+    color: var(--magenta);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .copyright-coffee {
+    color: var(--amber);
+  }
+
+  .tech-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 100px;
+  }
+
+  .tech-badge svg {
+    color: var(--magenta);
+  }
+
+  /* Back to Top */
+  .back-to-top {
+    position: fixed;
+    bottom: var(--space-md);
+    right: var(--space-md);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface);
+    border: 1px solid var(--surface-elevated);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: var(--transition-fast);
+    z-index: 100;
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    transform: translateY(-4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+
+    .footer-brand {
+      max-width: 100%;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .copyright {
+      justify-content: center;
+    }
+  }
+</style>

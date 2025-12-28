@@ -1,0 +1,305 @@
+---
+const navItems = [
+  { label: 'Servicios', href: '#servicios' },
+  { label: 'Sobre Mí', href: '#about' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Contacto', href: '#contacto' },
+];
+---
+
+<nav class="navbar">
+  <div class="nav-container">
+    <a href="/" class="logo">
+      <img src="/codelab-ai.logo.png" alt="codelab-ai.dev" class="logo-img" />
+      <span class="logo-bracket">[</span>
+      <span class="logo-text">codelab</span>
+      <span class="logo-dot">.</span>
+      <span class="logo-ai">ai</span>
+      <span class="logo-bracket">]</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger"></span>
+    </button>
+
+    <ul class="nav-menu">
+      {navItems.map((item, index) => (
+        <li class="nav-item" style={`--delay: ${index * 0.1}s`}>
+          <a href={item.href} class="nav-link">
+            <span class="nav-link-text">{item.label}</span>
+            <span class="nav-link-line"></span>
+          </a>
+        </li>
+      ))}
+      <li class="nav-item nav-cta">
+        <a href="#contacto" class="btn btn-primary btn-small">
+          <span class="btn-text">Hablemos</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.querySelector('.navbar');
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  // Scroll effect
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const currentScroll = window.pageYOffset;
+
+    if (currentScroll > 100) {
+      navbar?.classList.add('scrolled');
+    } else {
+      navbar?.classList.remove('scrolled');
+    }
+
+    lastScroll = currentScroll;
+  });
+
+  // Mobile menu toggle
+  navToggle?.addEventListener('click', () => {
+    const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+    navMenu?.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Close menu on link click
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu?.classList.remove('active');
+      navToggle?.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
+    });
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1.5rem 0;
+    transition: var(--transition-medium);
+  }
+
+  .navbar.scrolled {
+    background: rgba(3, 3, 8, 0.9);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--surface-elevated);
+    padding: 1rem 0;
+  }
+
+  .nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Logo */
+  .logo {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+  }
+
+  .logo-img {
+    height: 56px;
+    width: auto;
+    transition: var(--transition-fast);
+  }
+
+  .logo:hover .logo-img {
+    filter: drop-shadow(0 0 12px var(--cyan-dim));
+    transform: scale(1.05);
+  }
+
+  .logo-bracket {
+    color: var(--cyan);
+    opacity: 0.6;
+  }
+
+  .logo-text {
+    color: var(--text-primary);
+  }
+
+  .logo-dot {
+    color: var(--magenta);
+  }
+
+  .logo-ai {
+    color: var(--cyan);
+  }
+
+  .logo:hover .logo-bracket {
+    opacity: 1;
+    text-shadow: var(--glow-cyan);
+  }
+
+  /* Navigation Menu */
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    list-style: none;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    position: relative;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition-fast);
+  }
+
+  .nav-link-line {
+    width: 0;
+    height: 1px;
+    background: var(--gradient-cyber);
+    transition: var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-link:hover .nav-link-line {
+    width: 100%;
+  }
+
+  /* CTA Button */
+  .nav-cta .btn-small {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.75rem;
+  }
+
+  .nav-cta .btn-small svg {
+    transition: var(--transition-fast);
+  }
+
+  .nav-cta .btn-small:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Mobile Toggle */
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+
+  .hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    position: relative;
+    transition: var(--transition-fast);
+  }
+
+  .hamburger::before,
+  .hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    transition: var(--transition-fast);
+  }
+
+  .hamburger::before {
+    top: -8px;
+  }
+
+  .hamburger::after {
+    bottom: -8px;
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger {
+    background: transparent;
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger::before {
+    top: 0;
+    transform: rotate(45deg);
+    background: var(--cyan);
+  }
+
+  .nav-toggle[aria-expanded="true"] .hamburger::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+    background: var(--cyan);
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: block;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 100%;
+      height: 100vh;
+      background: var(--void);
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--space-lg);
+      transition: var(--transition-medium);
+    }
+
+    .nav-menu.active {
+      right: 0;
+    }
+
+    .nav-item {
+      opacity: 0;
+      transform: translateX(20px);
+      transition: var(--transition-medium);
+      transition-delay: var(--delay);
+    }
+
+    .nav-menu.active .nav-item {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .nav-link {
+      font-size: 1.5rem;
+    }
+
+    .nav-cta {
+      margin-top: var(--space-md);
+    }
+
+    .nav-cta .btn-small {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+    }
+  }
+</style>
